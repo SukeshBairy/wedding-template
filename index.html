@@ -178,8 +178,6 @@ footer .names{font-size:44px}
 @keyframes fall{to{transform:translateY(calc(100vh + 140px))}}
 @keyframes drift{from{transform:translateX(-26px)}to{transform:translateX(26px)}}
 @keyframes tumble{from{transform:rotateZ(0) rotateX(-50deg) rotateY(-25deg)}to{transform:rotateZ(240deg) rotateX(50deg) rotateY(25deg)}}
-.credits{font-size:12px;color:var(--muted);margin-top:34px;line-height:1.5;opacity:.85}
-.credits a{text-decoration:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -348,12 +346,6 @@ footer .names{font-size:44px}
   <div class="btns" style="justify-content:center;margin-top:20px">
     <button class="btn" id="shareBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-en="Copy Invite Link" data-kn="ಆಹ್ವಾನದ ಲಿಂಕ್ ನಕಲಿಸಿ">Copy Invite Link</span></button>
   </div>
-  <p class="credits en-only">Flower photographs (cut out from the originals) via Wikimedia Commons:
-    rose petals by aussiegall, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a> ·
-    yellow marigold by Kaviya Sakthivel, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
-  <p class="credits kn-only kn">ಹೂವಿನ ಛಾಯಾಚಿತ್ರಗಳು (ಮೂಲ ಚಿತ್ರಗಳಿಂದ ಕತ್ತರಿಸಲಾಗಿದೆ), ವಿಕಿಮೀಡಿಯಾ ಕಾಮನ್ಸ್:
-    ಗುಲಾಬಿ ದಳಗಳು – aussiegall, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a> ·
-    ಹಳದಿ ಚೆಂಡು ಹೂ – Kaviya Sakthivel, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -509,8 +501,8 @@ async function copy(txt,msg){try{await navigator.clipboard.writeText(txt);toast(
 $("#copyAddr").onclick=()=>copy(WEDDING.venue.address+"\n"+dirUrl, document.documentElement.lang==="kn"?"ವಿಳಾಸ ನಕಲಿಸಲಾಗಿದೆ":"Address copied");
 $("#shareBtn").onclick=()=>copy(WEDDING.siteUrl,document.documentElement.lang==="kn"?"ಲಿಂಕ್ ನಕಲಿಸಲಾಗಿದೆ":"Invite link copied");
 
-/* real flower photos (cut-outs, see credits in the footer) */
-const FLOWER = { yellow:"assets/flowers/marigold-yellow.webp", petal:"assets/flowers/rose-petal.webp" };
+/* real flower photos (cut-outs from public-domain CC0 images) */
+const FLOWER = { marigold:"assets/flowers/marigold.webp", petal:"assets/flowers/rose-petal.webp" };
 
 
 /* scroll reveal */
@@ -531,7 +523,7 @@ function petals(){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const R=Math.random;
   for(let i=0;i<30;i++){
-    const kind = i%5===4 ? "yellow" : "petal";                      // mostly rose petals, a few marigolds
+    const kind = i%5===4 ? "marigold" : "petal";                      // mostly rose petals, a few marigolds
     const size = kind==="petal" ? 16+R()*14 : 16+R()*10;
     const p=document.createElement("div"); p.className="petal";
     const fall=5.5+R()*3.5, delay=R()*2.2;
