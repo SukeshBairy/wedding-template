@@ -178,9 +178,6 @@ footer .names{font-size:44px}
 @keyframes fall{to{transform:translateY(calc(100vh + 140px))}}
 @keyframes drift{from{transform:translateX(-26px)}to{transform:translateX(26px)}}
 @keyframes tumble{from{transform:rotateZ(0) rotateX(-50deg) rotateY(-25deg)}to{transform:rotateZ(240deg) rotateX(50deg) rotateY(25deg)}}
-.lotus{position:relative;width:112px;margin:0 2px}
-.lotus img{display:block;width:100%;filter:drop-shadow(0 6px 6px rgba(94,30,82,.18))}
-.lotus:after{content:"";position:absolute;left:14%;right:14%;bottom:-6px;height:8px;border-radius:50%;background:radial-gradient(closest-side,rgba(94,30,82,.18),transparent)}
 .credits{font-size:12px;color:var(--muted);margin-top:34px;line-height:1.5;opacity:.85}
 .credits a{text-decoration:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -340,7 +337,7 @@ footer .names{font-size:44px}
 <footer class="paper">
   <div class="elephants" aria-hidden="true">
     <svg viewBox="0 0 90 70"><g fill="#9a8f8a"><ellipse cx="44" cy="38" rx="26" ry="17"/><circle cx="70" cy="30" r="12"/><path d="M78 34q8 10 4 26q-3 2-4-1q2-12-5-20z"/><rect x="24" y="48" width="7" height="16" rx="2"/><rect x="36" y="50" width="7" height="14" rx="2"/><rect x="52" y="50" width="7" height="14" rx="2"/><rect x="61" y="46" width="7" height="18" rx="2"/></g><path d="M30 24q14-6 28 0v20q-14 6-28 0z" fill="#5e1e52"/><path d="M30 44q14 6 28 0" stroke="#d9b56b" stroke-width="2" fill="none"/><circle cx="72" cy="28" r="1.6" fill="#3b2433"/><path d="M19.5 34q-6 5-5 15" stroke="#9a8f8a" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M14.5 48l-1.6 5M14.5 48l0.4 5.2M14.5 48l2 4.6" stroke="#6f6560" stroke-width="1.3" stroke-linecap="round"/><path d="M64 22q-8 2-7 14q6 2 10-2z" fill="#8a807b"/></svg>
-    <div class="lotus"><img src="assets/flowers/lotus.webp" alt=""></div>
+    <svg viewBox="0 0 60 50" style="width:64px"><g fill="#e8b4c8" stroke="#b46a8a" stroke-width=".8"><path d="M30 8q8 14 0 30q-8-16 0-30z"/><path d="M30 38q-14-4-20-18q12 0 20 18z"/><path d="M30 38q14-4 20-18q-12 0-20 18z"/><path d="M30 38q-20 2-28-6q14-6 28 6z"/><path d="M30 38q20 2 28-6q-14-6-28 6z"/></g><path d="M14 42h32" stroke="#6f8a4a" stroke-width="2"/></svg>
     <svg viewBox="0 0 90 70" style="transform:scaleX(-1)"><g fill="#9a8f8a"><ellipse cx="44" cy="38" rx="26" ry="17"/><circle cx="70" cy="30" r="12"/><path d="M78 34q8 10 4 26q-3 2-4-1q2-12-5-20z"/><rect x="24" y="48" width="7" height="16" rx="2"/><rect x="36" y="50" width="7" height="14" rx="2"/><rect x="52" y="50" width="7" height="14" rx="2"/><rect x="61" y="46" width="7" height="18" rx="2"/></g><path d="M30 24q14-6 28 0v20q-14 6-28 0z" fill="#5e1e52"/><path d="M30 44q14 6 28 0" stroke="#d9b56b" stroke-width="2" fill="none"/><circle cx="72" cy="28" r="1.6" fill="#3b2433"/><path d="M19.5 34q-6 5-5 15" stroke="#9a8f8a" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M14.5 48l-1.6 5M14.5 48l0.4 5.2M14.5 48l2 4.6" stroke="#6f6560" stroke-width="1.3" stroke-linecap="round"/><path d="M64 22q-8 2-7 14q6 2 10-2z" fill="#8a807b"/></svg>
   </div>
   <p class="en-only">We request the pleasure of your presence<br>and blessings for the newlyweds.</p>
@@ -352,11 +349,9 @@ footer .names{font-size:44px}
     <button class="btn" id="shareBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-en="Copy Invite Link" data-kn="ಆಹ್ವಾನದ ಲಿಂಕ್ ನಕಲಿಸಿ">Copy Invite Link</span></button>
   </div>
   <p class="credits en-only">Flower photographs (cut out from the originals) via Wikimedia Commons:
-    lotus by Hong Zhang, CC0 ·
     rose petals by aussiegall, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a> ·
     yellow marigold by Kaviya Sakthivel, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
   <p class="credits kn-only kn">ಹೂವಿನ ಛಾಯಾಚಿತ್ರಗಳು (ಮೂಲ ಚಿತ್ರಗಳಿಂದ ಕತ್ತರಿಸಲಾಗಿದೆ), ವಿಕಿಮೀಡಿಯಾ ಕಾಮನ್ಸ್:
-    ಕಮಲ – Hong Zhang, CC0 ·
     ಗುಲಾಬಿ ದಳಗಳು – aussiegall, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a> ·
     ಹಳದಿ ಚೆಂಡು ಹೂ – Kaviya Sakthivel, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
 </footer>
