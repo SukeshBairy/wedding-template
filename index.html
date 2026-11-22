@@ -353,6 +353,7 @@ footer .names{font-size:44px}
    Times marked tbc:true show a small "TO BE CONFIRMED" tag.
    ===================================================== */
 const WEDDING = {
+  siteUrl: "https://sukesh-weds-aishwarya.vercel.app/",
   venue: {
     name: "Sambhrama Wedding & Events Venue",
     address: "Sambhrama Wedding & Events Venue, Anjanapura Township, Bengaluru, Karnataka",
@@ -495,7 +496,7 @@ tick(); setInterval(tick,1000);
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
 async function copy(txt,msg){try{await navigator.clipboard.writeText(txt);toast(msg)}catch(e){toast(txt)}}
 $("#copyAddr").onclick=()=>copy(WEDDING.venue.address+"\n"+dirUrl, document.documentElement.lang==="kn"?"ವಿಳಾಸ ನಕಲಿಸಲಾಗಿದೆ":"Address copied");
-$("#shareBtn").onclick=()=>copy(location.href.split("#")[0], document.documentElement.lang==="kn"?"ಲಿಂಕ್ ನಕಲಿಸಲಾಗಿದೆ":"Invite link copied");
+$("#shareBtn").onclick=()=>copy(WEDDING.siteUrl,document.documentElement.lang==="kn"?"ಲಿಂಕ್ ನಕಲಿಸಲಾಗಿದೆ":"Invite link copied");
 
 /* garland strands across the top of the arch */
 (function(){const g=document.querySelector(".garland"),s=document.getElementById("strand");

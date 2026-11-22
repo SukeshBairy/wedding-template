@@ -10,6 +10,9 @@
 - After pushing, tell me what changed and remind me the live URL updates in about a minute.
 
 ## Deployment
-- GitHub repo: `sukesh-weds-aishwarya` (public), branch `main`.
-- Vercel project: `sukesh-weds-aishwarya`, no build step, static output from the root folder.
-  Every push to `main` deploys automatically.
+- GitHub repo: https://github.com/SukeshBairy/wedding-template (branch `main`).
+- Live site: https://sukesh-weds-aishwarya.vercel.app/ (Vercel project `sukesh-weds-aishwarya`,
+  no build step, static output from the root folder). Every push to `main` deploys automatically.
+- The "Copy Invite Link" button copies `WEDDING.siteUrl`; update it if the domain changes.
+- Claude's shell can't sign in to GitHub. After Claude commits, the user pushes from
+  VS Code (Source Control → Sync Changes).
