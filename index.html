@@ -50,8 +50,23 @@ img{max-width:100%;display:block}
   background:radial-gradient(circle at 35% 30%,#8f3a64,#5a1a3c 60%,#3d0f28);box-shadow:0 4px 10px rgba(0,0,0,.35),inset 0 0 0 3px rgba(0,0,0,.15);display:grid;place-items:center;transition:transform .6s,opacity .6s}
 .seal img{width:62%;filter:brightness(0) saturate(100%) invert(78%) sepia(35%) saturate(600%) hue-rotate(5deg)}
 .env-cover{position:absolute;inset:0;z-index:2;opacity:1;transition:opacity .5s}
-.opening .env-flap{transform:rotateX(180deg)}
+/* opening sequence: seal fades → flap flips back → card slides up → envelope fades → page fades in */
+.env-body{z-index:2}
+.env-card{position:absolute;left:7%;right:7%;top:6%;height:84%;z-index:1;border-radius:4px;background:#fffaf0;
+  box-shadow:0 -4px 14px rgba(67,18,58,.18);display:grid;place-items:center;transition:transform 1s cubic-bezier(.22,.8,.3,1) .95s}
+.env-card::before{content:"";position:absolute;inset:6%;border:1px solid #c9a768;border-radius:2px}
+.env-card span{font-family:"Playball",cursive;color:var(--plum);font-size:clamp(26px,8vw,40px);line-height:1;margin-top:-34%}
+.env-stage{transition:opacity .6s ease,transform .6s ease}
+.opening .env-flap{transform:rotateX(180deg);z-index:0;transition:transform .8s cubic-bezier(.5,.05,.3,1) .3s,z-index 0s .7s}
 .opening .seal{transform:translate(-50%,-50%) scale(.3);opacity:0}
+.opening .env-card{transform:translateY(-46%)}
+.env.opening+.tap{animation:none;opacity:0;transition:opacity .4s}
+#envelope.fading .env-stage{opacity:0;transform:scale(.97)}
+#envelope.gone{transition:opacity .8s ease,visibility .8s}
+body.entering .hero>*{animation:heroIn 1s ease both}
+body.entering .hero>*:nth-child(n+3){animation-delay:.15s}
+body.entering .hero>*:nth-child(n+6){animation-delay:.3s}
+@keyframes heroIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .tap{margin-top:28px;text-align:center;color:var(--plum);font-style:italic;font-size:18px;animation:pulse 2.2s infinite}
 .tap b{font-family:Cinzel;font-style:normal;font-size:12px;letter-spacing:.25em;display:block;margin-bottom:4px}
 @keyframes pulse{50%{opacity:.45}}
@@ -185,8 +200,9 @@ footer .names{font-size:44px}
 
 <!-- ============ ENVELOPE ============ -->
 <div id="envelope" role="dialog" aria-label="Open the invitation">
-  <div>
+  <div class="env-stage">
     <div class="env" id="envBtn" tabindex="0" aria-label="Tap to open the invitation">
+      <div class="env-card" aria-hidden="true"><span>S &amp; A</span></div>
       <div class="env-body paper">
         <div class="env-border"><svg viewBox="0 0 40 300" preserveAspectRatio="none"><defs><pattern id="sb" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="7" fill="none" stroke="#d9b56b" stroke-width="1.6"/><circle cx="20" cy="20" r="2.4" fill="#d9b56b"/><path d="M20 4v6M20 30v6M4 20h6M30 20h6" stroke="#d9b56b" stroke-width="1.4"/></pattern></defs><rect width="40" height="300" fill="url(#sb)"/><path d="M3 0v300M37 0v300" stroke="#d9b56b" stroke-width="1"/></svg></div>
         <div class="env-front">
@@ -533,7 +549,11 @@ function petals(){
   }
 }
 function openEnv(){ const e=$("#envBtn"); if(e.classList.contains("opening"))return; e.classList.add("opening");
-  setTimeout(()=>{ $("#envelope").classList.add("gone"); document.body.classList.remove("locked"); petals(); },1100); }
+  const fast=matchMedia("(prefers-reduced-motion: reduce)").matches, k=fast?.3:1;
+  setTimeout(()=>$("#envelope").classList.add("fading"),2500*k);           // envelope + card fade out together
+  setTimeout(()=>{ $("#envelope").classList.add("gone");                   // short plain pause, then the page fades in
+    document.body.classList.remove("locked"); document.body.classList.add("entering"); petals();
+    setTimeout(()=>document.body.classList.remove("entering"),1600); },3250*k); }
 $("#envBtn").addEventListener("click",openEnv);
 $("#envBtn").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" ")openEnv()});
 if(location.hash && !/^#for-/.test(location.hash)){ $("#envelope").classList.add("gone"); document.body.classList.remove("locked"); }
